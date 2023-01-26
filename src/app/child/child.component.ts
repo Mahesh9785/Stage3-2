@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -14,6 +14,9 @@ export class ChildComponent implements OnChanges {
 
   ngOnChanges() {
     this.lifecycleTicks++;
+  }
+
+  ngOnInit(){
     alert('Data : '+ this.data+' Ticks : '+this.lifecycleTicks);
   }
 }
