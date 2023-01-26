@@ -9,15 +9,15 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   `
 })
 export class ChildComponent implements OnChanges {
-  @Input() data: string='';
+  @Input() data: string=''; //The input decorator takes its value from the parent component and initializes the data
   lifecycleTicks: number = 0;
 
   ngOnChanges() {
-    this.lifecycleTicks++;
+    this.lifecycleTicks++; //whenever the value of data changes the ngOnChanges is fired and it increments the value of lifecycle ticks
   }
 
   ngOnInit(){
-    alert('Data : '+ this.data+' Ticks : '+this.lifecycleTicks);
+    alert('Data : '+ this.data+' Ticks : '+this.lifecycleTicks); // the ngOnInit fires only once and for the final time for initializing the data and the lifecycleticks.
   }
 }
 
@@ -31,6 +31,7 @@ export class ChildComponent implements OnChanges {
 export class ParentComponent {
   arbitraryData: string = 'initial';
 
+  //the constructor changes the value of the data to final so that the ngOnhanges can be fired after 5 seconds
   constructor() {
     setTimeout(() => {
       this.arbitraryData = 'final';
